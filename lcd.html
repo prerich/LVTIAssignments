@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Adding and LCD Fractions</title>
+    <meta name="author" content="Jennifer Robles"/>
+    <meta name="data updated" content="12/13/2017"/>
+    <meta name="description" content="doing math fucntiond"/>
+    <meta charset="utf-8">    
+</head>
+<body>
+    <p>Enter Numerator: <input id="numerator" type="number" name="numerator"></p>
+    <p>Enter Denominator: <input id="denominator" type="number" name="denominator"></p>
+    <p>2nd fraction</p>
+    <p>Enter Numerator: <input id="numerator2" type="number" name="numerator2"></p>
+    <p>Enter Denominator: <input id="denominator2" type="number" name="denominator2"></p>
+    <input type="submit" value="Submit" onclick="addFractions()">
+    
+<script>
+
+        
+let LCD = (den1, den2) =>{
+   for (let count=1; count<=den1; count++)
+       //counter to go up by one
+        if((den2*count)%den1 === 0){
+            //if number goes in evenly
+            //console.log('count is ' + count)
+            
+            return den2*count
+            //return the first/least common denominator
+        }
+}
+
+let addFractions = () =>{
+      //initialzed varibles
+    let num1 = document.getElementById('numerator').value;
+    let num2 = document.getElementById('numerator2').value;
+    let den1 = document.getElementById('denominator').value;
+    let den2 = document.getElementById('denominator2').value;
+    console.log(`the problem is ${num1}/${den1} plus ${num2}/${den2}`)
+    
+    
+       //get LCD which will be new Denominator
+    let ansDenom= LCD(den1, den2)
+    console.log('the LCD is ' + ansDenom)
+    
+        //convert both fractions to use
+    num1 = (num1 * ansDenom)/den1
+    num2 = (num2 * ansDenom)/den2
+    
+
+        
+    //add the numerators
+    let newNum = num2 + num1
+    
+    //print answer to the console
+    console.log(`The answer is ${newNum} / ${ansDenom}`)
+    
+    return {newNum, ansDenom}
+}
+    
+//addFractions(num1,num2,den1,den2);
+</script>    
+</body>
+</html>
