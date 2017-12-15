@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simpligying Fractions</title>
+    <meta name="author" content="Jennfier Robles"/>
+    <meta name="data updated" content="12/14/2017"/>
+    <meta name="description" content="simplifing fractions"/>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<script>
+const loadDocument = () =>{
+
+    //function to find the greatest common factor
+    let gcf = (num1, num2) => {
+    //we will start with the num1 value to be the factor guess
+     let factorGuess = num1;
+    // a boolean to see if a number is even or not
+     let isEven =  num1%factorGuess == 0 && num2%factorGuess == 0 ;
+    //a loop to find the next GFC if not num1 
+     while(factorGuess >= 1){
+    isEven =  num1%factorGuess == 0 && num2%factorGuess == 0 ;
+        if(!isEven){
+            factorGuess--;
+        
+        } else {
+            console.log(`the gcf is ${factorGuess}`);
+            return factorGuess
+        } 
+     } // closes while
+    
+    } // closes gcf
+    //function to simplify fraction
+    let simFrac = (num, den) =>{
+        console.log(`problem  is ${num}/${den}`)
+        
+        //use prev function for GCF
+        let gcfValue = gcf(num, den);
+        
+        //divide numerator by gcf
+       num = num / gcfValue;
+        
+        //divide denominator by gcf
+       den = den / gcfValue;
+        
+        //display answer
+        console.log(`answer is ${num}/${den}`)
+        return [num, den]
+    }
+   simFrac(28, 50);
+   simFrac(8, 24);
+   simFrac(30, 54);
+   simFrac(18, 42);
+  
+        
+    }
+     
+let body = document.getElementsByTagName('body')
+body.onload = loadDocument();
+</script>
+</body>
+</html>
+ 
