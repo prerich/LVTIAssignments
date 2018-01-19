@@ -9,6 +9,7 @@ public class ConnectTwo extends WindowController{
     private Double sizex;
     private Double sizey;
     private Location rectLocation;
+    private Color myColor = new Color(0 ,200, 255);
     private FilledRect finalRect;
     private Location firstPoint;  
     private Location finalPoint; // The location where button was pressed
@@ -16,7 +17,7 @@ public class ConnectTwo extends WindowController{
         
     // Display "Pressed" when the button is pressed.
     public void onMousePress(Location pressPoint){
-        new Text("Pressed", pressPoint, canvas);
+        //new Text("Pressed", pressPoint, canvas);
         firstPoint = pressPoint;
         rect = new FramedRect(firstPoint, 0, 0 ,canvas);
        
@@ -27,6 +28,8 @@ public class ConnectTwo extends WindowController{
     {
         rect.hide();
         rect = new FramedRect(firstPoint, p, canvas);
+        rect.setColor(myColor);
+      
         
        
        
@@ -35,14 +38,19 @@ public class ConnectTwo extends WindowController{
     // Display "Released" and draw a line from where the mouse
     // was last pressed.
     public void onMouseRelease(Location releasePoint){
-        new Text("Released", releasePoint, canvas);
-        new Line(firstPoint, releasePoint, canvas);
+        
+        rect.hide();
         sizex = rect.getWidth();
         sizey = rect.getHeight();
         rectLocation = rect.getLocation();
         finalRect = new FilledRect(rectLocation, sizex, sizey, canvas);
-       //rect = new FramedRect(firstPoint, releasePoint, canvas);
-       finalPoint = releasePoint;
+        finalRect.setColor(myColor);
+       
+    }
+    
+    public void onMouseExit(Location x){
+        
+        canvas.clear();
     }
     
   

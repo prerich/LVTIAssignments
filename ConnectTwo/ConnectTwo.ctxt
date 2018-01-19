@@ -5,4 +5,6 @@ comment1.params=p
 comment1.target=void\ onMouseDrag(objectdraw.Location)
 comment2.params=releasePoint
 comment2.target=void\ onMouseRelease(objectdraw.Location)
-numComments=3
+comment3.params=x
+comment3.target=void\ onMouseExit(objectdraw.Location)
+numComments=4
